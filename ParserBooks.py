@@ -4,6 +4,7 @@ import re
 import json
 from tabulate import tabulate
 import requests
+import os
 import random
 from bs4 import BeautifulSoup
 
@@ -42,7 +43,8 @@ for tag in soup.find_all("a", class_="book-cardLong-author"):
 rand = random.randrange(len(name))
 # print(author[rand], name[rand], desc[rand], sep='\n')
 
-API_ENDPOINT = "http://localhost:8080/books"
+# ip = os.getenv("IP")
+API_ENDPOINT = os.getenv("IP")
 data = {
     "title": name[rand],
     "description": desc[rand],
